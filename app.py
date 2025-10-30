@@ -32,7 +32,6 @@ if img_file_buffer is not None:
     # image = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2RGB)
 
     # data = qreader.detect_and_decode(image=image)
-    st.image(cv2.polylines(cv2_img, [points], True, (0, 255, 0), 3))
 
     if data:
         st.success(f"QR Code terdeteksi: {data}")
