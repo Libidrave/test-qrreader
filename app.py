@@ -2,6 +2,7 @@ import streamlit as st
 import cv2
 import numpy as np
 import pandas as pd
+from qreader import QReader
 
 st.title("Test Action UI")
 
@@ -20,9 +21,14 @@ if img_file_buffer is not None:
 
     st.image(cv2_img, channels="BGR", caption="Gambar yang Diambil")
 
-    detector = cv2.QRCodeDetector()
+    # detector = cv2.QRCodeDetector()
 
-    data, bbox, straight_qrcode = detector.detectAndDecode(cv2_img)
+    # data, bbox, straight_qrcode = detector.detectAndDecode(cv2_img)
+    qreader = QReader()
+
+    image = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2RGB)
+
+    data = qreader.detect_and_decode(image=image)
 
     if data:
         st.success(f"QR Code terdeteksi: {data}")

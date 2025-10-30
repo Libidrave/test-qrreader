@@ -1,5 +1,8 @@
+torch --no-cache-dir
 streamlit
 opencv-contrib-python-headless
 numpy
 Pillow
 pandas
+qreader
+pyzbar
