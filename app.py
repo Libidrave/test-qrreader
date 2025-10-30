@@ -3,7 +3,9 @@ import cv2
 import numpy as np
 import pandas as pd
 # from qreader import QReader
+from cv2.wechat_qrcode import WeChatQRCode
 
+qr = WeChatQRCode("./detect.prototxt", "./detect.caffemodel", "./sr.prototxt", "./sr.caffemodel")
 st.title("Test Action UI")
 
 # Komponen untuk mengambil gambar dari kamera
@@ -23,13 +25,16 @@ if img_file_buffer is not None:
 
     detector = cv2.QRCodeDetector()
 
-    data, bbox, straight_qrcode = detector.detectAndDecode(cv2_img)
+    # data, bbox, straight_qrcode = detector.detectAndDecode(cv2_img)
+    data, points = qr.detectAndDecode(cv2_img)
     # qreader = QReader()
 
     # image = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2RGB)
 
     # data = qreader.detect_and_decode(image=image)
-
+    points = points.astype(int)
+    st.image(cv2.polylines(cv2_img, [points], True, (0, 255, 0), 3))
+    
     if data:
         st.success(f"QR Code terdeteksi: {data}")
         
