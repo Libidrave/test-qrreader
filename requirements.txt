@@ -1,4 +1,4 @@
-torch --no-cache-dir
+torch
 streamlit
 opencv-contrib-python-headless
 numpy
