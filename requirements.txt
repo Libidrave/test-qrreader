@@ -1,9 +1,5 @@
-torch
 streamlit
 opencv-contrib-python-headless
 numpy
 Pillow
 pandas
-qreader
-pyzbar
-zbar
